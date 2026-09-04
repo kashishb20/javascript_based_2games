@@ -5,190 +5,515 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>JavaScript Games</title>
+    <title>JavaScript Games | Game Hub</title>
 
     <style>
+
+        /* =========================
+           RESET
+        ========================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
+        /* =========================
+           BODY
+        ========================== */
+
         body {
             min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #141e30, #243b55);
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
 
-            color: white;
-        }
+            background:
+                radial-gradient(circle at top left, #243b55 0%, transparent 40%),
+                radial-gradient(circle at bottom right, #16213e 0%, transparent 40%),
+                #0b1120;
 
-        .container {
-            width: 90%;
-            max-width: 800px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .subtitle {
-            font-size: 20px;
-            margin-bottom: 45px;
-            color: #dcdcdc;
-        }
-
-        .games {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .game-card {
-            width: 300px;
-            min-height: 220px;
-
-            background: white;
-            color: #222;
-
-            border-radius: 20px;
-            padding: 35px 25px;
-
-            text-decoration: none;
+            color: #ffffff;
 
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        .navbar {
+            width: 100%;
+            height: 72px;
+
+            display: flex;
             align-items: center;
+            justify-content: space-between;
 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 0 7%;
 
-            transition: transform 0.3s ease,
-                        box-shadow 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+            background: rgba(11, 17, 32, 0.75);
+
+            backdrop-filter: blur(12px);
         }
 
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .game-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
+        .logo span {
+            color: #8ab4f8;
         }
 
-        .game-card h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .game-card p {
-            font-size: 16px;
-            color: #666;
-        }
-
-        .play {
-            margin-top: 20px;
-            padding: 10px 25px;
-
-            background: #222;
-            color: white;
-
-            border-radius: 25px;
-
-            font-size: 16px;
-        }
-
-        footer {
-            margin-top: 50px;
-            color: #bdbdbd;
+        .nav-right {
+            color: #aeb8ca;
             font-size: 14px;
         }
 
-        @media (max-width: 650px) {
 
-            h1 {
-                font-size: 36px;
+        /* =========================
+           MAIN
+        ========================== */
+
+        main {
+            flex: 1;
+
+            width: 100%;
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 80px 25px 60px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .badge {
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            border-radius: 30px;
+
+            background: rgba(138, 180, 248, 0.1);
+
+            border: 1px solid rgba(138, 180, 248, 0.25);
+
+            color: #a9c8ff;
+
+            font-size: 13px;
+
+            margin-bottom: 22px;
+        }
+
+        .hero-title {
+            font-size: clamp(42px, 6vw, 68px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: #8ab4f8;
+        }
+
+        .hero-text {
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            color: #aeb8ca;
+
+            font-size: 18px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           GAME CARDS
+        ========================== */
+
+        .games {
+            margin-top: 65px;
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 28px;
+
+            text-align: left;
+        }
+
+
+        .game-card {
+            position: relative;
+
+            padding: 34px;
+
+            min-height: 330px;
+
+            border-radius: 22px;
+
+            background: rgba(255, 255, 255, 0.055);
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(14px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                background 0.3s ease;
+        }
+
+        .game-card:hover {
+            transform: translateY(-7px);
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border-color: rgba(138, 180, 248, 0.45);
+        }
+
+
+        /* =========================
+           GAME ICON
+        ========================== */
+
+        .game-icon {
+            width: 68px;
+            height: 68px;
+
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 35px;
+
+            background: rgba(138, 180, 248, 0.1);
+
+            border: 1px solid rgba(138, 180, 248, 0.2);
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =========================
+           CARD CONTENT
+        ========================== */
+
+        .game-number {
+            color: #8ab4f8;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .game-card h2 {
+            font-size: 30px;
+
+            margin-bottom: 12px;
+        }
+
+        .game-card p {
+            color: #aeb8ca;
+
+            font-size: 16px;
+
+            line-height: 1.6;
+
+            max-width: 430px;
+        }
+
+
+        /* =========================
+           PLAY BUTTON
+        ========================== */
+
+        .play-button {
+            margin-top: auto;
+
+            padding-top: 30px;
+        }
+
+        .play-button a {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding: 13px 21px;
+
+            border-radius: 10px;
+
+            background: #ffffff;
+
+            color: #111827;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .play-button a:hover {
+            background: #dbe8ff;
+
+            transform: translateX(4px);
+        }
+
+        .arrow {
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            width: 100%;
+
+            padding: 25px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+            color: #748096;
+
+            font-size: 13px;
+        }
+
+        footer span {
+            color: #aeb8ca;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                padding: 0 25px;
             }
 
-            .subtitle {
-                font-size: 17px;
+            .nav-right {
+                display: none;
+            }
+
+            main {
+                padding-top: 60px;
+            }
+
+            .games {
+                grid-template-columns: 1fr;
             }
 
             .game-card {
-                width: 90%;
+                min-height: 300px;
             }
         }
+
+
+        @media (max-width: 450px) {
+
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .hero-text {
+                font-size: 16px;
+            }
+
+            .game-card {
+                padding: 28px;
+            }
+
+            .game-card h2 {
+                font-size: 26px;
+            }
+        }
+
     </style>
 </head>
 
+
 <body>
 
-    <div class="container">
 
-        <h1>🎮 JavaScript Games</h1>
+    <!-- =========================
+         NAVBAR
+    ========================== -->
 
-        <p class="subtitle">
-            Choose a game and start playing!
+    <nav class="navbar">
+
+        <div class="logo">
+            Game<span>Hub</span>
+        </div>
+
+        <div class="nav-right">
+            Built with HTML, CSS & JavaScript
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main>
+
+        <div class="badge">
+            🎮 2 Games Available
+        </div>
+
+
+        <h1 class="hero-title">
+            JavaScript <span>Games</span>
+        </h1>
+
+
+        <p class="hero-text">
+            Take a break and challenge yourself with these
+            interactive JavaScript games. Choose your game
+            and start playing.
         </p>
 
-        <div class="games">
 
-            <!-- Tic Tac Toe -->
-            <a href="tictac_/index.html" class="game-card">
+        <!-- =========================
+             GAME CARDS
+        ========================== -->
+
+        <section class="games">
+
+
+            <!-- TIC TAC TOE -->
+
+            <article class="game-card">
 
                 <div class="game-icon">
                     ❌⭕
                 </div>
 
-                <h2>Tic Tac Toe</h2>
-
-                <p>
-                    Challenge yourself in the classic
-                    Tic Tac Toe game.
-                </p>
-
-                <div class="play">
-                    ▶ Play Game
+                <div class="game-number">
+                    Game 01
                 </div>
 
-            </a>
+                <h2>
+                    Tic Tac Toe
+                </h2>
+
+                <p>
+                    A classic two-player strategy game.
+                    Place your marks, create a winning
+                    combination and beat your opponent.
+                </p>
+
+                <div class="play-button">
+
+                    <a href="tictac_/index.html">
+                        Play Now
+                        <span class="arrow">→</span>
+                    </a>
+
+                </div>
+
+            </article>
 
 
-            <!-- Rock Paper Scissors -->
-            <a href="game_/index1.html" class="game-card">
+
+            <!-- ROCK PAPER SCISSORS -->
+
+            <article class="game-card">
 
                 <div class="game-icon">
-                    ✊✋✌️
+                    ✊
                 </div>
 
-                <h2>Rock Paper Scissors</h2>
+                <div class="game-number">
+                    Game 02
+                </div>
+
+                <h2>
+                    Rock Paper Scissors
+                </h2>
 
                 <p>
-                    Choose your move and compete
-                    against the computer.
+                    Choose Rock, Paper or Scissors and
+                    compete against the computer.
+                    Test your luck and strategy.
                 </p>
 
-                <div class="play">
-                    ▶ Play Game
+                <div class="play-button">
+
+                    <a href="game_/index1.html">
+                        Play Now
+                        <span class="arrow">→</span>
+                    </a>
+
                 </div>
 
-            </a>
+            </article>
 
-        </div>
 
-        <footer>
-            <p>Made with HTML, CSS & JavaScript</p>
-        </footer>
+        </section>
 
-    </div>
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <span>JavaScript Games</span>
+        &nbsp;•&nbsp;
+        Built as a web development project
+
+    </footer>
+
 
 </body>
 
 </html>
+
